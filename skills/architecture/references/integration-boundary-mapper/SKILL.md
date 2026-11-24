@@ -1,10 +1,9 @@
 ---
-name: "integration-boundary-mapper"
-pack: "software-architecture-pack"
-purpose: "Map where systems, modules, or services integrate and identify ownership, contracts, data movement, and coordination risk."
-inputs: ["system context", "internal and external integrations", "data and event flows", "ownership boundaries"]
-outputs: ["integration map", "contract risks", "boundary recommendations", "handoff recommendation"]
-handoffs: ["service-decomposition-advisor", "deployment-view-writer", "architecture-risk-assessor"]
+name: integration-boundary-mapper
+description: "Map where systems, modules, or services integrate and identify ownership, contracts, data movement, and coordination risk."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # integration-boundary-mapper
 

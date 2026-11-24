@@ -1,10 +1,9 @@
 ---
-name: "tradeoff-analysis-writer"
-pack: "software-architecture-pack"
-purpose: "Analyze competing architecture options against explicit criteria and show what is gained and lost with each path."
-inputs: ["candidate options", "evaluation criteria", "context and priorities", "known risks"]
-outputs: ["tradeoff matrix", "narrative rationale", "recommended option", "handoff recommendation"]
-handoffs: ["adr-writer", "quality-attribute-scenario-writer", "architecture-risk-assessor"]
+name: tradeoff-analysis-writer
+description: "Analyze competing architecture options against explicit criteria and show what is gained and lost with each path."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # tradeoff-analysis-writer
 

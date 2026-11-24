@@ -1,10 +1,9 @@
 ---
-name: "monolith-vs-modular-monolith-reviewer"
-pack: "software-architecture-pack"
-purpose: "Evaluate whether a codebase or proposed system should remain a monolith, become a modular monolith, or move further toward service decomposition."
-inputs: ["system scope", "team size and ownership model", "deployment and scaling needs", "change and failure patterns"]
-outputs: ["decision framing", "option comparison", "risks and caveats", "recommended next step"]
-handoffs: ["component-boundary-reviewer", "service-decomposition-advisor", "adr-writer"]
+name: monolith-vs-modular-monolith-reviewer
+description: "Evaluate whether a codebase or proposed system should remain a monolith, become a modular monolith, or move further toward service decomposition."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # monolith-vs-modular-monolith-reviewer
 

@@ -1,10 +1,9 @@
 ---
-name: "availability-strategy-reviewer"
-pack: "software-architecture-pack"
-purpose: "Review the architecture for resilience, redundancy, graceful degradation, recovery, and operational continuity."
-inputs: ["deployment view or environment plan", "critical user journeys", "failure assumptions", "recovery expectations"]
-outputs: ["availability findings", "single points of failure", "recovery recommendations", "handoff recommendation"]
-handoffs: ["deployment-view-writer", "architecture-risk-assessor", "adr-writer"]
+name: availability-strategy-reviewer
+description: "Review the architecture for resilience, redundancy, graceful degradation, recovery, and operational continuity."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # availability-strategy-reviewer
 

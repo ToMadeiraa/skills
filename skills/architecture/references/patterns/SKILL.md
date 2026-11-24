@@ -1,7 +1,7 @@
 ---
 name: design-patterns
-version: 1.0.0
 description: "Guidance on when and how to apply design patterns. Use when: (1) asking which pattern to use, (2) refactoring code, (3) discussing code smells, (4) need to decouple components, (5) building extensible systems."
+disable-model-invocation: true
 ---
 
 # Design Patterns
@@ -31,7 +31,7 @@ Expert guidance on applying Gang of Four design patterns to solve common softwar
 3. **Don't over-engineer** - Apply patterns only when they solve real problems
 4. **Explain trade-offs** - Discuss pros and cons of each pattern
 5. **Prefer simplicity** - If a simpler solution exists, recommend it
-6. **Show examples** - Provide TypeScript code examples
+6. **Show examples** - Provide examples in the project's language. In this workspace that is modern C++ (value semantics, `std::variant`, RAII, smart pointers, templates); translate any TypeScript-looking shape from memory into idiomatic C++ rather than emitting TypeScript.
 7. **Consider alternatives** - Mention related or alternative patterns
 
 ## Pattern Selection Decision Tree

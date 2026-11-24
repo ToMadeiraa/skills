@@ -18,7 +18,8 @@ about to make any of them worse.
 ## Internal linkage, the cheapest big lever
 
 Everything in a `.cpp` file that is not part of the interface belongs in an anonymous
-namespace:
+namespace — unless the project bans namespaces or file-scope entities. In that case this section
+does not apply, and the linkage saving is given up for the project rule:
 
 ```cpp
 namespace {

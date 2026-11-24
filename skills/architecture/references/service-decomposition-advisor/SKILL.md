@@ -1,10 +1,9 @@
 ---
-name: "service-decomposition-advisor"
-pack: "software-architecture-pack"
-purpose: "Assess service boundaries and decomposition candidates with explicit attention to cohesion, coupling, data ownership, and operational cost."
-inputs: ["domain or module map", "integration points", "team boundaries", "scaling or release pressures"]
-outputs: ["decomposition candidates", "anti-split warnings", "boundary rationale", "recommended option"]
-handoffs: ["integration-boundary-mapper", "runtime-view-writer", "adr-writer"]
+name: service-decomposition-advisor
+description: "Assess service boundaries and decomposition candidates with explicit attention to cohesion, coupling, data ownership, and operational cost."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # service-decomposition-advisor
 

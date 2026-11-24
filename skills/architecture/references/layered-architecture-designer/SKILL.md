@@ -1,10 +1,9 @@
 ---
-name: "layered-architecture-designer"
-pack: "software-architecture-pack"
-purpose: "Propose a layered architecture with clear responsibilities, dependency direction, and boundary rules."
-inputs: ["system responsibilities", "key use cases", "cross-cutting concerns", "technology constraints"]
-outputs: ["layer breakdown", "responsibility map", "dependency rules", "handoff recommendation"]
-handoffs: ["component-boundary-reviewer", "runtime-view-writer", "deployment-view-writer"]
+name: layered-architecture-designer
+description: "Propose a layered architecture with clear responsibilities, dependency direction, and boundary rules."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # layered-architecture-designer
 

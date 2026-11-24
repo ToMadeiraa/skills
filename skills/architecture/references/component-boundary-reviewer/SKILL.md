@@ -1,10 +1,9 @@
 ---
-name: "component-boundary-reviewer"
-pack: "software-architecture-pack"
-purpose: "Review or define internal component boundaries so responsibilities, contracts, and dependencies stay coherent."
-inputs: ["architecture or code structure", "key modules/components", "dependency graph if available", "change scenarios"]
-outputs: ["boundary findings", "dependency issues", "refinement suggestions", "handoff recommendation"]
-handoffs: ["runtime-view-writer", "deployment-view-writer", "adr-writer"]
+name: component-boundary-reviewer
+description: "Review or define internal component boundaries so responsibilities, contracts, and dependencies stay coherent."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # component-boundary-reviewer
 

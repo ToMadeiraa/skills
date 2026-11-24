@@ -7,6 +7,10 @@ description: Docker containerization best practices for building, securing, and 
 
 You are an expert in Docker containerization, image building, and container orchestration.
 
+**Scope.** Use this skill only when the project actually ships a container image or runs services
+in containers. The Qt desktop client in this workspace does not: do not containerize it, add a
+Dockerfile, or restructure its build for containers unless the user asks.
+
 ## Core Principles
 
 - Build minimal, secure container images

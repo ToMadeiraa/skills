@@ -1,10 +1,9 @@
 ---
-name: "architecture-option-generator"
-pack: "software-architecture-pack"
-purpose: "Generate credible architecture options for a system and frame the decision as explicit tradeoffs rather than defaulting to a favorite style."
-inputs: ["problem context", "functional and non-functional requirements", "constraints and assumptions", "existing system context if any"]
-outputs: ["architecture options table", "tradeoff summary", "recommended option", "handoff recommendation"]
-handoffs: ["quality-attribute-scenario-writer", "adr-writer", "component-boundary-reviewer"]
+name: architecture-option-generator
+description: "Generate credible architecture options for a system and frame the decision as explicit tradeoffs rather than defaulting to a favorite style."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # architecture-option-generator
 

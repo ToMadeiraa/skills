@@ -3,6 +3,11 @@
 Load when adding or organizing headers, deciding what goes in which file, designing a library
 boundary, or fixing include and link problems.
 
+> **Project override.** If the project bans namespaces or file-scope entities — this workspace
+> does, see the project's `SKILLS.md` — the "Namespaces" rules below and the anonymous-namespace
+> advice do not apply. Declare types in the global scope and keep state and helpers in classes,
+> as the project requires. Everything else in this file still applies.
+
 ## Header and source split
 
 - A header declares the interface. Put in it only what callers need: declarations, templates,
@@ -24,17 +29,18 @@ boundary, or fixing include and link problems.
 
 ## Namespaces
 
-- Put everything in a project namespace. Nothing at global scope except `main`.
+- Where the project allows namespaces: put everything in a project namespace, with nothing at
+  global scope except `main`. A project that bans namespaces overrides this rule.
 - Use a nested `detail` namespace for entities that are public only because the language
   requires it, and do not document them as interface.
 - Bake a session identifier into OS-visible IPC names, and group entities in session-scoped
   namespaces so unrelated sessions cannot collide.
 - Never open namespace `std`, except to specialize a template the standard permits for a
   user-defined type.
-- Put every entity local to a `.cpp` file in an anonymous namespace: helpers, constants,
-  types. That removes the symbol from the object file, lets the compiler inline and delete
-  freely, and prevents accidental linkage. `static` on a free function does the same for one
-  function.
+- Where file-local helpers are allowed, put every entity local to a `.cpp` file in an anonymous
+  namespace: helpers, constants, types. That removes the symbol from the object file, lets the
+  compiler inline and delete freely, and prevents accidental linkage. `static` on a free function
+  does the same for one function. A project that bans file-scope helpers overrides this rule.
 - Never use an unnamed namespace in a header. It produces a distinct entity per translation
   unit.
 - Inline namespaces version an ABI. Use them deliberately, not for convenience.

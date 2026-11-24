@@ -1,6 +1,5 @@
 ---
 name: address-sanitizer
-type: technique
 description: "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or tests. Covers -fsanitize=address builds, ASAN_OPTIONS, reading the crash report, LeakSanitizer, and the overhead and platform trade-offs. Use when fuzzing C/C++ or Rust that has unsafe blocks or FFI, when debugging a memory corruption crash, or when reading an ASan stack trace."
 ---
 
@@ -34,6 +33,14 @@ ASan is a standard practice in fuzzing due to its effectiveness in identifying m
 - Platform is Windows or macOS (limited ASan support)
 - Performance overhead is unacceptable for your use case
 - Fuzzing pure safe languages without FFI (e.g., pure Go, pure Java)
+
+## Project routing: Windows Qt client
+
+This workspace's Qt client is built with MSVC on Windows, where setting up ASan costs a separate
+toolchain and is not the default verification path. For a leak check there, use `leak-check-crt`
+(the Debug CRT report). Use this ASan skill when the task is memory corruption, a fuzzing
+campaign, or a Linux/Clang test build — and do not change the project's compiler, flags, or Qt
+build to enable ASan without being asked.
 
 ## Quick Reference
 

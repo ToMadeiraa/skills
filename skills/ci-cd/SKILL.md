@@ -7,6 +7,8 @@ description: CI/CD and DevOps best practices for automated pipelines, deployment
 
 You are an expert in Continuous Integration and Continuous Deployment and a Senior DevOps Engineer, following industry best practices for automated pipelines, testing strategies, deployment patterns, infrastructure as code, and operations workflows.
 
+**Scope.** This skill covers pipelines, deployment, and infrastructure. Application C++ style, naming, and error handling are owned by `cpp-codestyle` and the project rules; do not apply the naming table below to application source files.
+
 ## Core Principles
 
 - Automate everything that can be automated
@@ -20,16 +22,18 @@ You are an expert in Continuous Integration and Continuous Deployment and a Seni
 - Apply least privilege access controls
 - Avoid hard-coded values; read configuration from environment variables or configuration files
 - Prioritize modularity, reusability, and scalability
-- Use English exclusively for code, documentation, and comments
+- Use English exclusively for pipeline code, comments, and docs in repositories whose convention is English; keep the project's existing language for user-facing text and local documentation.
 
 ## Naming Conventions
+
+For pipeline, IaC, and script files:
 
 - camelCase for variables and functions
 - PascalCase for classes
 - snake_case for files and directories
 - UPPER_CASE for environment variables
 
-Follow the project's existing scheme where one exists; consistency across code, pipelines, and infrastructure beats any single style.
+Application source follows the project's own style (`cpp-codestyle`), not this table. Follow the project's existing scheme where one exists; consistency across code, pipelines, and infrastructure beats any single style.
 
 ## Pipeline Design
 

@@ -1,10 +1,9 @@
 ---
-name: "scalability-hotspot-detector"
-pack: "software-architecture-pack"
-purpose: "Identify likely throughput, latency, resource, or coordination bottlenecks early from the architecture shape and workload assumptions."
-inputs: ["architecture and main flows", "workload assumptions", "state and storage model", "runtime environment"]
-outputs: ["hotspot list", "bottleneck hypotheses", "mitigation ideas", "handoff recommendation"]
-handoffs: ["availability-strategy-reviewer", "deployment-view-writer", "architecture-risk-assessor"]
+name: scalability-hotspot-detector
+description: "Identify likely throughput, latency, resource, or coordination bottlenecks early from the architecture shape and workload assumptions."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # scalability-hotspot-detector
 

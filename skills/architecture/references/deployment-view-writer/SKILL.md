@@ -1,10 +1,9 @@
 ---
-name: "deployment-view-writer"
-pack: "software-architecture-pack"
-purpose: "Map software elements onto environments, nodes, containers, or processes and explain the deployment consequences."
-inputs: ["runtime structure", "environment assumptions", "infrastructure/platform choice", "security and availability constraints"]
-outputs: ["deployment view", "environment mapping", "deployment risks", "handoff recommendation"]
-handoffs: ["availability-strategy-reviewer", "scalability-hotspot-detector", "adr-writer"]
+name: deployment-view-writer
+description: "Map software elements onto environments, nodes, containers, or processes and explain the deployment consequences."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # deployment-view-writer
 

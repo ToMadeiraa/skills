@@ -1,22 +1,28 @@
 ---
-name: code-review-skill
+name: code-review
 description: |
-  Provides comprehensive code review guidance for C/C++, Qt.
-  Covers architecture review, performance review, security audit, code quality anti-patterns,
-  and common bugs across all ecosystems.
-  Every review also loads the language or framework sub-skill chosen by the Trigger table
-  (core-cpp/SKILL.md, section 6): any C++ code -> references/cpp-review/SKILL.md,
-  any C code -> references/c-review/SKILL.md, any Qt code -> references/qt-review/SKILL.md.
-  Read the chosen sub-skill before reviewing the change and apply it alongside this file.
-  Use when: reviewing pull requests, conducting PR reviews, code review, reviewing code changes,
-  reviewing the last commit, judging whether a change is over-engineered,
-  establishing review standards, mentoring developers, architecture reviews, security audits,
-  performance reviews, checking code quality, finding bugs, giving feedback on code.
+  Comprehensive code review guidance for C/C++ and Qt: correctness, safety, load, tests,
+  performance, and lean code. Load the language sub-skill before reading the change:
+  C++ -> references/cpp-review/SKILL.md, C -> references/c-review/SKILL.md,
+  Qt -> references/qt-review/SKILL.md. Use when reviewing pull requests, a branch, the last
+  commit, or uncommitted work; when judging over-engineering; or when setting review standards.
 ---
 
 # Code Review Skill
 
 Transform code reviews from gatekeeping to knowledge sharing through constructive feedback, systematic analysis, and collaborative improvement.
+
+## Load the language guide first
+
+Before reading the diff, open exactly one guide and apply it together with this file:
+
+| Change contains | Read |
+|---|---|
+| C++ (any standard, any size) | [references/cpp-review/SKILL.md](references/cpp-review/SKILL.md) |
+| C (C89–C23) | [references/c-review/SKILL.md](references/c-review/SKILL.md) |
+| Qt (QObject, signals/slots, widgets, QML, models) | [references/qt-review/SKILL.md](references/qt-review/SKILL.md) |
+
+A Qt change is also C++, so load `qt-review` plus `cpp-review` when both apply.
 
 ## When to Use This Skill
 
@@ -123,7 +129,8 @@ Then read the code, not only the diff:
 - A change can break code it does not touch. When a signature, return value or behavior changes, grep every caller.
 - Find the expected load in the repo (README, deploy config, service description): one person running a script, or many users and processes at once. Judge scale against that, and say which load you assumed.
 
-> For large diffs, pipe the diff through [`scripts/pr-analyzer.py`](scripts/pr-analyzer.py) (`git diff main...HEAD | python scripts/pr-analyzer.py`) to triage complexity and get a suggested review approach before reading.
+> For large diffs, split the review by file or ask for a smaller change; there is no bundled
+> analyzer script in this workspace.
 
 ### Phase 2: High-Level Review (5-10 minutes)
 
@@ -181,11 +188,13 @@ Six kinds of finding, in the order of importance above. Each is a finding only w
 
 ## Check Before You Report
 
+- The project is the standard. Where `SKILLS.md`, `AGENTS.md`, or `cpp-codestyle` fixes naming, formatting, error strategy, or bans a mechanism (namespaces, exceptions, file-scope entities), a deviation from that rule is the finding; compliance with it is never a finding, even when an external guide prefers otherwise. If the project has no test harness, its verification recipe (build, end-to-end run, leak check) is the evidence; do not demand a unit test the project cannot run.
 - Every finding needs a concrete case: "this input or situation leads to this wrong result". No case, no finding.
 - Re-read the lines and confirm: the caller exists, the value can really be empty, the code really is unused. Grep instead of guessing.
 - A shortcut marked with a `shortcut:` (or older `ponytail:`) comment that names its limit is a decision, not a finding - unless the expected load already crosses that limit.
 - Propose the smallest fix that works. Prefer fixes that delete code. Never add layers, frameworks or config the problem does not need.
 - No style taste, no "consider", no vague worries. Formatting and linting belong to clang-format and the static analyzer, not to a review comment.
+- The language sub-skill supplies the language checks; this file supplies the process and report. `core-cpp/references/code-review.md` is a short summary of the same method, not a third standard.
 
 ## Review Techniques
 

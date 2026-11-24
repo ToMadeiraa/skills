@@ -1,7 +1,8 @@
 ---
-name: cpp
-description: Use on any C++ task: write, review, refactor, modernize against the C++ Core Guidelines at the detected standard.
-license: MIT
+name: core-cpp
+description: "Use for any code-level C++ task: write, review, refactor, or modernize against the C++ Core Guidelines at the detected standard. Defers to project style and project bans (namespaces, exceptions, file-scope entities). Use `architecture` for system-level design."
+metadata:
+  license: MIT
 ---
 
 # Writing C++ properly
@@ -40,13 +41,19 @@ is missing, the fallback idiom and the traps.
 - No feature above the detected standard, no compiler extension without a stated reason.
 - Warning-clean build. Fix the warning, never silence it. `[[maybe_unused]]` for a genuinely
   conditional entity, never a cast to `void`.
-- RAII for every resource. No `new`, no `delete`, no owning raw pointer, no manual cleanup.
+- RAII for every resource. No manual `new`/`delete`, no owning raw pointer, no manual cleanup.
+  The exception is a framework ownership model: a `QObject` created with a parent is owned by
+  that parent, and Qt code follows `qt-review` rather than this rule.
 - Initialize every object at its declaration. Keep scopes minimal.
 - Const by default, `constexpr` where computable at compile time.
 - Measure before claiming. Speed needs a profile, counters or the emitted
   assembly. Correctness needs test output.
 - Match the project: naming, formatting, error strategy. Consistency beats any
   style guide, and the lowest-churn fix comes first.
+- Project bans are absolute. If the project forbids namespaces, exceptions, or file-scope
+  variables and functions, those bans override every reference in this skill, including
+  `source-files.md` and `errors.md`. Load `constrained-environments` and follow the project's
+  result-code error strategy; do not introduce a banned mechanism as "modern C++".
 
 ## 2a. Dead code: measure, then delete
 
@@ -76,15 +83,18 @@ before installing. On a no, continue without cppman and say the lookup did not r
 
 ## 3. Universal red flags, fix on sight
 
-`new` or `delete` in application code. An owning raw pointer. A C cast. An uninitialized
+Manual `new` or `delete` in application code. An owning raw pointer without a framework owner (Qt
+parent-child ownership is an owner, not a leak). A C cast. An uninitialized
 variable. A magic number. A comment restating the code. A manual index loop an algorithm
 covers. A macro a `constexpr` variable, function or template replaces. `using namespace` in
-a header. A public data member protected by an invariant. A non-virtual destructor in a
-polymorphic base. A function longer than a screen. A `catch (...)` that swallows. An
-out-parameter where a return value fits. A copy where a reference or move fits. A
-hand-written specialization of an already-generic routine. A view stored beyond the lifetime
-of what it views. A file-local helper with external linkage, not an anonymous
-namespace. An allocation inside a hot loop.
+a header, or anywhere the project bans it. A public data member protected by an invariant.
+A non-virtual destructor in a polymorphic base. A function longer than a screen. A
+`catch (...)` that swallows. An out-parameter where a return value fits. A copy where a
+reference or move fits. A hand-written specialization of an already-generic routine. A view
+stored beyond the lifetime of what it views. A helper visible outside its file that no other
+file uses (where the project permits file-local helpers, an anonymous namespace is the fix;
+where it forbids them, delete the helper or make it a class member). An allocation inside a
+hot loop.
 
 ## 4. Topic triggers
 

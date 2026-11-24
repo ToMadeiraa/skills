@@ -1,6 +1,16 @@
+---
+name: qt-review
+description: "Qt code review checklist: object model, signals and slots, containers, threads, widgets, Model/View, QML, Qt 5 to 6 migration, tests, and GUI performance. Loaded by the `code-review` skill; not a standalone task skill."
+disable-model-invocation: true
+---
+
 # Qt Code Review Guide
 
 > Code review guidelines focusing on object model, signals/slots, Model/View, QML, Qt6 migration, event loop, testing, and GUI performance. Examples based on Qt 5.15 / Qt 6.
+>
+> **Project override.** The project's own rules (`SKILLS.md`, `cpp-codestyle`) decide naming,
+> formatting, and the error strategy; this workspace bans exceptions, namespaces, and file-scope
+> entities. Do not report compliance with those bans as a finding.
 
 ## Table of Contents
 

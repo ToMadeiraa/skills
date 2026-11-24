@@ -1,6 +1,6 @@
 ---
-name: ui-design
-description: UI and UX design best practices for the web — visual and interaction design, user research, information architecture, content strategy, mobile-first and responsive layouts, accessibility (WCAG 2.1 AA), performance, and usability testing
+name: ui-ux-design
+description: "Web UI and UX design best practices: visual and interaction design, user research, information architecture, content strategy, mobile-first and responsive layouts, accessibility (WCAG 2.1 AA), performance, and usability testing. Use for web interfaces, not for Qt Widgets/QML."
 metadata:
   maintainer: Mindrally
   source: https://github.com/Mindrally/skills
@@ -9,6 +9,10 @@ metadata:
 # UI/UX Design Best Practices
 
 You are an expert in UI and UX design principles for software development. Apply these guidelines when designing, creating, or reviewing user interfaces and user experiences.
+
+**Scope.** This is a web guide: HTML/CSS/JS, responsive layouts, WCAG, and Core Web Vitals. For
+the Qt Widgets/QML desktop client in this workspace, use `qt-review` and the project's own UI
+conventions; CSS Grid, semantic HTML, and browser-performance rules do not apply there.
 
 ## User Research
 

@@ -1,10 +1,9 @@
 ---
-name: "runtime-view-writer"
-pack: "software-architecture-pack"
-purpose: "Describe the runtime behavior of the architecture including major components, request flows, async behavior, and failure paths."
-inputs: ["chosen architecture", "main use cases or flows", "components/services", "operational assumptions"]
-outputs: ["runtime view summary", "interaction flow notes", "failure and recovery notes", "handoff recommendation"]
-handoffs: ["deployment-view-writer", "availability-strategy-reviewer", "quality-attribute-scenario-writer"]
+name: runtime-view-writer
+description: "Describe the runtime behavior of the architecture including major components, request flows, async behavior, and failure paths."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # runtime-view-writer
 

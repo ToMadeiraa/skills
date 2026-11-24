@@ -1,6 +1,6 @@
 ---
-name: sql-best-practices
-description: SQL development best practices for writing efficient, secure, and maintainable queries, with PostgreSQL specifics for schema design, indexing, query plans, JSONB, transactions, maintenance, and security
+name: sql-postgresql
+description: "SQL development best practices for efficient, secure, maintainable queries, with PostgreSQL specifics for schema design, indexing, query plans, JSONB, transactions, maintenance, and security."
 metadata:
   maintainer: Mindrally
   source: https://github.com/Mindrally/skills
@@ -9,6 +9,10 @@ metadata:
 # SQL Best Practices
 
 The rules below are portable SQL; PostgreSQL is the dialect used in the concrete examples. Where another engine behaves differently, the text says so explicitly.
+
+**Scope.** The project's existing schema wins: do not rename existing tables or columns, rewrite
+migrations, or "fix" a working query for style. Apply this guidance to new SQL and to changes the
+task actually requires; verify with the project's `client-e2e-check` after touching the data path.
 
 ## Core Principles
 

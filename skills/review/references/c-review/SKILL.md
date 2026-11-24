@@ -1,6 +1,15 @@
+---
+name: c-review
+description: "C code review checklist: pointer and buffer safety, ownership, undefined behavior, integer types, error handling, concurrency, macros, API design, portability, tests, and tooling. Loaded by the `code-review` skill; not a standalone task skill."
+disable-model-invocation: true
+---
+
 # C Code Review Guide
 
 > C code review guide focused on memory safety, undefined behavior, portability, testing, and secure coding. Examples assume C11/C17.
+>
+> **Project override.** The project's own rules decide style, naming, and the error strategy. A
+> deviation from the project rule is the finding; compliance with it is not.
 
 ## Table of Contents
 

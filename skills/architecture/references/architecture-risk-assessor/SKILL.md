@@ -1,10 +1,9 @@
 ---
-name: "architecture-risk-assessor"
-pack: "software-architecture-pack"
-purpose: "Identify the main architectural risks, uncertainty points, and potential failure modes before the system hardens around them."
-inputs: ["architecture option or chosen design", "quality goals", "constraints", "known unknowns"]
-outputs: ["risk register", "risk severity notes", "mitigations and experiments", "handoff recommendation"]
-handoffs: ["tradeoff-analysis-writer", "adr-writer", "availability-strategy-reviewer"]
+name: architecture-risk-assessor
+description: "Identify the main architectural risks, uncertainty points, and potential failure modes before the system hardens around them."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # architecture-risk-assessor
 

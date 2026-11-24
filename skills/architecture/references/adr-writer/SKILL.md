@@ -1,10 +1,9 @@
 ---
-name: "adr-writer"
-pack: "software-architecture-pack"
-purpose: "Write an architecture decision record that preserves context, options considered, rationale, and consequences."
-inputs: ["decision to capture", "drivers and constraints", "options considered", "outcome and consequences"]
-outputs: ["ADR draft", "open questions", "follow-up actions", "traceable decision summary"]
-handoffs: ["tradeoff-analysis-writer", "deployment-view-writer", "architecture-risk-assessor"]
+name: adr-writer
+description: "Write an architecture decision record that preserves context, options considered, rationale, and consequences."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # adr-writer
 

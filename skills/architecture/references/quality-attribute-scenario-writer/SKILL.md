@@ -1,10 +1,9 @@
 ---
-name: "quality-attribute-scenario-writer"
-pack: "software-architecture-pack"
-purpose: "Convert vague quality goals like performance or maintainability into concrete architecture-driving scenarios."
-inputs: ["non-functional goals", "stakeholders", "critical scenarios", "constraints"]
-outputs: ["quality attribute scenarios", "priority notes", "measurement ideas", "handoff recommendation"]
-handoffs: ["architecture-risk-assessor", "tradeoff-analysis-writer", "adr-writer"]
+name: quality-attribute-scenario-writer
+description: "Convert vague quality goals like performance or maintainability into concrete architecture-driving scenarios."
+disable-model-invocation: true
+metadata:
+  pack: software-architecture-pack
 ---
 # quality-attribute-scenario-writer
 

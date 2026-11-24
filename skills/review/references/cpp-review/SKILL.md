@@ -1,6 +1,16 @@
+---
+name: cpp-review
+description: "C++ code review checklist: ownership and RAII, lifetime, copy/move, API design, error handling, concurrency, performance, templates, tests, and tooling. Loaded by the `code-review` skill; not a standalone task skill."
+disable-model-invocation: true
+---
+
 # C++ Code Review Guide
 
 > C++ code review guide focused on memory safety, lifetime, API design, modern features, and performance. Examples assume C++17/20/23.
+>
+> **Project override.** The project's own rules (`SKILLS.md`, `cpp-codestyle`, `AGENTS.md`) decide
+> naming, formatting, and the error strategy. Never report compliance with a project rule as a
+> finding; report a deviation from the project rule, not from this guide.
 
 ## Table of Contents
 
@@ -26,6 +36,9 @@
 ### Prefer RAII and smart pointers
 
 Use RAII to express ownership. Default to `std::unique_ptr`, use `std::shared_ptr` only for shared lifetime.
+
+Qt note: a `QObject` constructed with a parent is owned by that parent. `new QWidget(parent)` is the
+framework's ownership idiom, not a leak; do not ask for `unique_ptr` there.
 
 ```cpp
 // ❌ Bad: manual new/delete with early returns
@@ -302,6 +315,10 @@ struct Worker final : Base {
 ---
 
 ## Error Handling and Exception Safety
+
+> In a no-exceptions project (this workspace), skip the throw/catch items below. Check instead that
+> every fallible call is checked, every error is logged or returned, and no result code is ignored.
+> RAII still owns every resource.
 
 ### Prefer RAII for cleanup
 
@@ -803,7 +820,7 @@ TEST(UserServiceTest, FetchesUserProfile) {
 }
 ```
 
-### Test exception safety
+### Test exception safety (skip in a no-exceptions project)
 
 ```cpp
 TEST(AllocatorTest, ThrowsOnOverflow) {

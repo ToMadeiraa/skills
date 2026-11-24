@@ -1,6 +1,6 @@
 ---
-name: cpp-architecture
-description: C++ architecture standards. Use when building and designing architecture.
+name: architecture
+description: "Software architecture design and review: options and tradeoffs, component boundaries, runtime and deployment views, risks, availability, scalability, ADRs, and design-pattern selection. The sub-skills are language-agnostic; pattern examples are C++. Use for architecture-level decisions; use `core-cpp` for code-level work."
 ---
 # Architecture Design
 
@@ -16,7 +16,7 @@ Every time this skill is used for a task, you **MUST**:
 2. **Select by trigger, not by name.** Pick the rows whose *Trigger* matches what the task actually needs — the artifact requested and the architectural concern involved. Prefer 1–3 focused sub-skills; do not fire every row.
 3. **Open the referenced files.** Read each selected file in full through its Reference link — architecture sub-skills sit at `references/<name>/SKILL.md`, pattern catalogs at `references/patterns/references/<category>.md` — never work from the trigger summary alone.
 4. **Follow the sub-skill.** Treat its *Operating procedure*, *Quality gates*, *Minimum output skeleton*, and *Failure modes to avoid* as binding for that part of the task.
-5. **Respect dependencies and handoffs.** When several sub-skills apply, run the ones that produce inputs for the others first — typically: quality goals → options → tradeoff/decision → structure (layers, boundaries, decomposition) → runtime and deployment views → risk, resilience, scalability → final ADR. After each one, check its `Handoff targets` and continue only while the task still needs it.
+5. **Respect dependencies and handoffs.** When several sub-skills apply, run the ones that produce inputs for the others first — typically: quality goals → options → tradeoff/decision → structure (layers, boundaries, decomposition) → runtime and deployment views → risk, resilience, scalability → final ADR. The full chain is a map, not a checklist: 1–3 focused sub-skills is the norm. After each one, check its `Handoff targets` and continue only while the task still needs it.
 6. **Announce the routing.** Before the main content, list the selected sub-skills and one clause on why each applies, so the choice is auditable.
 
 **Fallback:** if no row matches the task (for example, a plain C++ style question), say so explicitly, answer from the principles stated in this file, and do not force an irrelevant sub-skill.
@@ -35,19 +35,32 @@ Then you **MUST**:
 3. **Name the force and a rejected alternative.** Each recommendation states the problem it solves and the simpler or competing option rejected — or says "no pattern" when plain code suffices.
 4. **Prefer the simplest idiomatic solution.** In C++ prefer value semantics, `std::variant`, templates/compile-time polymorphism, type erasure, and constructor/DI over classic GoF ceremony; the C++ Core Guidelines and the project's own style rules outrank the pattern catalog when they conflict.
 5. **Check the anti-pattern list.** No default Singleton (use dependency injection), no Factory for a single product, no premature abstraction, no decorator towers.
-6. **Record the choice.** Pattern name, force addressed, rejected alternative, cost/risk, where it lands in the code, and examples adapted to the codebase's language — the catalogs use TypeScript, so for C++ translate to RAII, smart pointers, and templates.
+6. **Record the choice.** Pattern name, force addressed, rejected alternative, cost/risk, where it lands in the code, and examples adapted to the codebase's language. The catalogs carry C++ examples; adapt them to the project's style (RAII, smart pointers, templates) and to any project ban, such as a no-namespace or no-exceptions rule.
 
 ## When to Use
 
-- Writing new C++ code (classes, functions, templates)
-- Reviewing or refactoring existing C++ code
-- Making architectural decisions in C++ projects
+- Choosing a system shape: monolith, modular monolith, services, layers.
+- Deciding component or service boundaries, contracts, and dependency direction.
+- Turning quality goals into measurable scenarios; comparing architecture options by tradeoffs.
+- Writing architecture artifacts: ADRs, runtime and deployment views, risk registers.
+- Reviewing a system for availability, scalability hotspots, or integration risk.
+- Selecting a design pattern because a real design force demands it.
 
 ### When NOT to Use
 
-- Non-C++ projects
-- Legacy C codebases that cannot adopt modern C++ features
-- Embedded/bare-metal contexts where specific guidelines conflict with hardware constraints (adapt selectively)
+- Code-level work — one class, function, file, naming, formatting, or a local refactor. Use
+  `core-cpp` and `cpp-codestyle`; loading this router for a one-line fix is noise.
+- A direct question answerable from the code in front of you, with no structural decision.
+- Deciding a pattern before there are two implementations to choose between: plain code wins.
+- A system whose architecture is already fixed by its platform or framework, with no structural
+  choice left; answer directly instead of producing architecture artifacts.
+
+### Boundary with the code-level skills
+
+This skill owns system structure and decisions; `core-cpp` owns C++ code quality. When both are
+in play, settle the architecture first, then implement under `core-cpp` and the project rules
+(the project's `SKILLS.md`, `AGENTS.md`, and `cpp-codestyle`). The project's bans and naming
+always win over any recommendation here.
 
 ## Reference Skills
 
