@@ -1,54 +1,44 @@
 ---
 name: main-skill
-description: "Точка входа для C++/Qt-работы: загружай этот скилл первым и выбирай по нему специализированный скилл. Ссылается на address-sanitizer, architecture, ci-cd-best-practices, codestyle, core-cpp, docker, grpc-expert, code-review, ui-ux-design, sql-postgresql с пояснением, когда каждый нужен."
+description: "Entry point for C++/Qt-related work: load this skill first, then select a specialized skill based on it. It references address-sanitizer, architecture, ci-cd-best-practices, codestyle, core-cpp, docker, grpc-expert, code-review, ui-ux-design, and sql-postgresql, with explanations on when each should be used."
 ---
 
-# Main skill — точка входа
+# Main skill — Entry Point
 
-Этот скилл загружается первым для любой задачи в этом воркспейсе. Он не заменяет
-специализированные скиллы, а выбирает 1–3 из них. Прямое указание пользователя важнее
-любой строки таблицы.
+This skill should be loaded first for any task within this workspace. It does not replace
+specialized skills; rather, it is used to select 1–3 of them. An explicit instruction from the user
+takes precedence over any entry in the table.
 
-## Как пользоваться
+## How to Use
 
-1. Определи тип задачи и выбери строки, у которых совпадает «Когда».
-2. Загрузи выбранные скиллы по точному имени через инструмент `skill`. Если скилла нет в
-   каталоге, прочитай файл по ссылке.
-3. Перед ответом назови, какие скиллы загружены и почему.
-4. Не загружай все строки сразу: это лишний контекст и противоречивые советы.
+1. Identify the type of task and select the rows that match the "When" criterion.
+2. Load the selected skills—using their exact names—via the `skill` tool. If a skill is not in the catalog, refer to the file linked.
+3. Before providing an answer, state which skills have been loaded and why.
+4. Do not load all rows at once; doing so adds unnecessary context and may lead to conflicting advice.
 
-## Всегда действует
+## Overriding Rules
 
-- Правила проекта (`SKILLS.md`, `AGENTS.md`) и `cpp-codestyle` важнее любого скилла.
-- В проекте запрещены namespace, исключения и сущности уровня файла; переменные — `snake_case`.
-- Если скилл противоречит правилам проекта, побеждают правила проекта, а не скилл.
+- Project rules (`SKILLS.md`, `AGENTS.md`) and the `cpp-codestyle` take precedence over any skill.
+- The use of namespaces, exceptions, and file-level entities is prohibited; variables must follow `snake_case` naming conventions.
+- If a skill contradicts the project rules, the project rules prevail.
 
-## Маршрутизация
-
-| Точное имя скилла | Файл | Когда использовать |
+| Exact Skill Name | File | When to Use |
 |---|---|---|
-| `core-cpp` | [../core-cpp/SKILL.md](../core-cpp/SKILL.md) | Любая работа с C++ на уровне кода: написать, отрефакторить, отревьюить, определить стандарт. Не для системного дизайна. |
-| `codestyle` | [../codestyle/SKILL.md](../codestyle/SKILL.md) | Нужен минимальный полный diff, YAGNI, lean-код; общий метод для любой задачи. Не заменяет `core-cpp`. |
-| `architecture` | [../architecture/SKILL.md](../architecture/SKILL.md) | Системный дизайн: монолит/сервисы, границы, tradeoffs, ADR, runtime/deployment, риски, паттерны. Не для одной функции. |
-| `code-review` | [../review/SKILL.md](../review/SKILL.md) | Ревью PR, ветки, коммита или незакоммиченных изменений. Подгружает `cpp-review` и `qt-review`. |
-| `address-sanitizer` | [../address-sanitizer/SKILL.md](../address-sanitizer/SKILL.md) | Порча памяти, fuzzing, ASan/LSan на Linux/Clang. На Windows-Qt для утечек сначала `leak-check-crt`. |
-| `sql-postgresql` | [../sql-postgresql/SKILL.md](../sql-postgresql/SKILL.md) | SQL и PostgreSQL: запросы, индексы, планы, JSONB, транзакции. Существующая схема важнее стиля. |
-| `grpc-expert` | [../gRPC/SKILL.md](../gRPC/SKILL.md) | `.proto`, стриминг, каналы, дедлайны, статусы. Не менять уже работающий транспорт без просьбы. |
-| `ci-cd-best-practices` | [../ci-cd/SKILL.md](../ci-cd/SKILL.md) | Пайплайны, деплой, IaC, тесты в CI. Не применять к C++-коду. |
-| `docker` | [../docker/SKILL.md](../docker/SKILL.md) | Только если проект реально контейнеризуется. Qt-клиент — нет. |
-| `ui-ux-design` | [../ui-ux-design/SKILL.md](../ui-ux-design/SKILL.md) | Только web UI/UX. Для Qt Widgets/QML не применять; там `code-review` с `qt-review`. |
+| `core-cpp` | [../core-cpp/SKILL.md](../core-cpp/SKILL.md) | Any C++ work at the code level: writing, refactoring, reviewing, or defining standards. Not for system design. |
+| `codestyle` | [../codestyle/SKILL.md](../codestyle/SKILL.md) | For minimal, complete diffs, YAGNI, and lean code; a general approach applicable to any task. Does not replace `core-cpp`. |
+| `architecture` | [../architecture/SKILL.md](../architecture/SKILL.md) | System design: monoliths/services, boundaries, trade-offs, ADRs, runtime/deployment, risks, and patterns. Not for individual functions. |
+| `code-review` | [../review/SKILL.md](../review/SKILL.md) | Reviewing PRs, branches, commits, or uncommitted changes. Loads `cpp-review`, `c-review`, and `qt-review`. |
+| `address-sanitizer` | [../address-sanitizer/SKILL.md](../address-sanitizer/SKILL.md) | Memory corruption, fuzzing, and ASan/LSan on Linux/Clang. For memory leaks in Windows-Qt environments, use `leak-check-crt` first. |
+| `sql-postgresql` | [../sql-postgresql/SKILL.md](../sql-postgresql/SKILL.md) | SQL and PostgreSQL: queries, indexes, execution plans, JSONB, and transactions. Existing schema takes precedence over style. |
+| `grpc-expert` | [../gRPC/SKILL.md](../gRPC/SKILL.md) | `.proto` files, streaming, channels, deadlines, and status codes. | Do not modify existing, functional components unless requested. |
+| `ci-cd-best-practices` | [../ci-cd/SKILL.md](../ci-cd/SKILL.md) | Pipelines, deployment, IaC, CI testing. Do not apply to C++ code. |
+| `docker` | [../docker/SKILL.md](../docker/SKILL.md) | Only if the project is genuinely containerizable. Not applicable to a Qt client. |
+| `ui-ux-design` | [../ui-ux-design/SKILL.md](../ui-ux-design/SKILL.md) | Web UI/UX only. Do not apply to Qt Widgets/QML; use `code-review` with `qt-review` instead. |
 
-## Проверка после изменений
 
-Эти скиллы берутся из каталога по имени, без ссылок:
+## Common mistakes
 
-- `build-and-verify` — после правок `src/` или `CMakeLists.txt`;
-- `client-e2e-check` — после изменений потока, батчей, SQL или конфигурации БД;
-- `leak-check-crt` — после изменений владения памятью, на Windows.
-
-## Частые ошибки
-
-- Загрузить `architecture` для одной строки кода.
-- Заменить `core-cpp` на `codestyle`: `codestyle` — метод, `core-cpp` — правила C++.
-- Применить `docker`, `ui-ux-design` или `ci-cd` к Qt-клиенту без прямой просьбы.
-- Загрузить все скиллы сразу.
+- Uploading `architecture` for just a single line of code.
+- Confusing `core-cpp` with `codestyle`: `codestyle` refers to a methodology, while `core-cpp` refers to C++ rules.
+- Applying `docker`, `ui-ux-design`, or `ci-cd` to a Qt client without an explicit request.
+- Uploading all skills at once.

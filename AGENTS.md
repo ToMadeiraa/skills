@@ -1,8 +1,5 @@
 # AGENTS.md — skills-cpp
 
-Этот репозиторий — набор скиллов DeepSeek Harness. Перед ответом на любой запрос в этом
-воркспейсе загрузи точку входа `main-skill` (`skills/main_skill/SKILL.md`) и следуй её
-таблице маршрутизации.
+This repository contains a collection of DeepSeek Harness skills. Before responding to any request within this workspace, load the `main-skill` entry point (`skills/main_skill/SKILL.md`) and follow its routing table.
 
-Если инструмент `skill` недоступен, прочитай файл `skills/main_skill/SKILL.md` напрямую.
-Не выбирай специализированный скилл по памяти: маршрутизатор — источник истины.
+If the `skill` tool is unavailable, read the `skills/main_skill/SKILL.md` file directly. Do not select a specialized skill based on memory; the router is the source of truth.
